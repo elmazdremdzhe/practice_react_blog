@@ -3,6 +3,8 @@ import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import { createPost } from '../actions';
+import _ from 'lodash';
+
 
 
 class PostsNew extends Component{
@@ -10,12 +12,11 @@ class PostsNew extends Component{
     renderField(field){
 
         const { meta: {touched, error} } = field;
-        const className = ` form-group ${touched  && error? "has-danger" : ''} `;
 
         return(
-            <div className={className} >
+            <div className={` form-group ${touched  && error? "has-danger" : ''}`} >
                 <label>{field.label}</label>
-                <input
+                <field.type
                     className="form-control"
                     type="text"
                     {...field.input}
@@ -40,20 +41,24 @@ class PostsNew extends Component{
         const { handleSubmit } = this.props;
 
         return(
-            <form onSubmit={handleSubmit(this.onSubmit.bind(this))} >
+            <form onSubmit={handleSubmit(props => this.onSubmit(props))} >
+
                 <Field
                     name="title"
                     label="Title"
+                    type="input"
                     component={this.renderField}
                 />
                 <Field
                     name="categories"
                     label="Categories"
+                    type="input"
                     component={this.renderField}
                 />
                 <Field
                     name="content"
                     label="Post Content"
+                    type="textarea"
                     component={this.renderField}
                 />
 
@@ -74,19 +79,12 @@ function validate(values){
     //Validate the inputs from 'values'
 
 
-    if(!values.title ){
-        errors.title = "Enter a title!";
-    }
+   _.each(FIELDS, (field, fieldName) => {
 
-
-
-    if(!values.categories){
-        errors.categories = "Enter some categories";
-    }
-    if(!values.content){
-        errors.content = "Enter some content please";
-    }
-
+       if(!values[fieldName]){
+           errors[fieldName] = 'Enter ' +  field.label;
+       }
+   });
     //If errors is empty, the form is fine to submit
     //If errors has *any* properties, redux from assumes form is invalid
 
@@ -94,8 +92,10 @@ function validate(values){
 }
 
 export default reduxForm({
-    validate,
+
     form: 'PostsNewForm',
+
+    validate,
 })(
     connect(null, { createPost })(PostsNew)
  );
