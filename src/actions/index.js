@@ -4,6 +4,9 @@ export const FETCH_POSTS = 'FETCH_POSTS';
 export const FETCH_POST = 'FETCH_POST';
 export const CREATE_POST = "Create post";
 export const DELETE_POST = "Delete post";
+export const POST_SELECTED = " post selected";
+export const POST_DESELECTED = " post deselected";
+
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const APP_KEY = '?key=asu78asd';
@@ -47,6 +50,23 @@ export function deletePost(id, callback){
 
     return{
         type: DELETE_POST,
+        payload: id
+    }
+}
+
+
+export function postSelected(id){
+
+    return{
+        type: POST_SELECTED,
+        payload: id
+    }
+}
+
+export function postDeselected(id){
+
+    return{
+        type: POST_DESELECTED,
         payload: id
     }
 }

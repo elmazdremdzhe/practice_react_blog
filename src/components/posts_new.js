@@ -79,12 +79,19 @@ function validate(values){
     //Validate the inputs from 'values'
 
 
-   _.each(FIELDS, (field, fieldName) => {
+    if(!values.title ){
+        errors.title = "Enter a title!";
+    }
 
-       if(!values[fieldName]){
-           errors[fieldName] = 'Enter ' +  field.label;
-       }
-   });
+
+
+    if(!values.categories){
+        errors.categories = "Enter some categories";
+    }
+    if(!values.content){
+        errors.content = "Enter some content please";
+    }
+
     //If errors is empty, the form is fine to submit
     //If errors has *any* properties, redux from assumes form is invalid
 

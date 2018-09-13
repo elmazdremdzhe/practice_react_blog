@@ -8,6 +8,9 @@ import ReduxPromise from 'redux-promise';
 import PostsIndex from './components/posts_index.js';
 import PostsNew from './components/posts_new.js';
 import PostsShow from './components/posts_show.js';
+import {Photos} from './components/photos.js'
+import {onPhotosEnter } from './routes/route_callbacks';
+
 
 import reducers from './reducers';
 
@@ -18,6 +21,7 @@ ReactDOM.render(
     <BrowserRouter>
         <Switch>
 
+            <Route path="/photos" component={Photos} />
             <Route path="/posts/new" component={PostsNew} />
             <Route path="/posts/:id" component={PostsShow} />
             <Route path="/" component={PostsIndex}/>
