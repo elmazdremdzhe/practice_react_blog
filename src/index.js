@@ -9,6 +9,8 @@ import PostsIndex from './components/posts_index.js';
 import PostsNew from './components/posts_new.js';
 import PostsShow from './components/posts_show.js';
 import {Photos} from './components/photos.js'
+import AnimatedComments from './components/animated_comments';
+import ComponentWithModalWindow from './components/component_with_modal_window';
 import {onPhotosEnter } from './routes/route_callbacks';
 
 
@@ -22,6 +24,8 @@ ReactDOM.render(
         <Switch>
 
             <Route path="/photos" component={Photos} />
+            <Route path="/animation" component={AnimatedComments} />
+            <Route path="/modal" component={ComponentWithModalWindow} />
             <Route path="/posts/new" component={PostsNew} />
             <Route path="/posts/:id" component={PostsShow} />
             <Route path="/" component={PostsIndex}/>

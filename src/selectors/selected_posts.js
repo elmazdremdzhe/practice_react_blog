@@ -11,9 +11,6 @@ const selectedPostsSelector = state => state.selectedPostIds;
 
 
 const getPosts = (posts, selectedPostIds) => {
-  console.log(selectedPostIds);
-
-//const selectedPosts = _.pick(posts, selectedPostIds);
 
     const selectedPosts = _.filter(
         posts,
