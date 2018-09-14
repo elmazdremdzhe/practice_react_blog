@@ -13,7 +13,7 @@ li{
     position: relative;
 }
 
-
+/*----ANIMATION------ */
 /*starting state of the animation */
 .fade-enter{
     right: 100px;
@@ -40,3 +40,9 @@ li{
     transition: .5s ease-out all;
 
 }
+
+.right{
+    position: relative;
+}
+
+/**/
