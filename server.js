@@ -5,7 +5,12 @@ const app = express();
 
 app.use(express.static(__dirname));
 
-app.get('*', (req, res) => {
+//how to responce to api request
+app.get('/api/posts', (req, res) =>{
+   res.send([{id:1}]);
+});
+
+сжapp.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
