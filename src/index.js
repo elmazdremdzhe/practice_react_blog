@@ -11,6 +11,7 @@ import PostsShow from './components/posts_show.js';
 import {Photos} from './components/photos.js'
 import AnimatedComments from './components/animated_comments';
 import ComponentWithModalWindow from './components/component_with_modal_window';
+import Map from './components/map';
 import {onPhotosEnter } from './routes/route_callbacks';
 
 
@@ -23,6 +24,7 @@ ReactDOM.render(
     <BrowserRouter>
         <Switch>
 
+            <Route path="/map" component={Map} />
             <Route path="/photos" component={Photos} />
             <Route path="/animation" component={AnimatedComments} />
             <Route path="/modal" component={ComponentWithModalWindow} />

@@ -10,7 +10,7 @@ app.get('/api/posts', (req, res) =>{
    res.send([{id:1}]);
 });
 
-сжapp.get('*', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
